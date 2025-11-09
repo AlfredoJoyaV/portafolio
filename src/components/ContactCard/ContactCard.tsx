@@ -1,6 +1,6 @@
-const ContactCard = () => {
+export const ContactCard = () => {
   return (
-    <section id="contacto" className="min-h-screen flex items-center justify-center py-16 px-8">
+    <section id="contacto" className="min-h-screen flex items-center justify-center py-20 px-8">
       <div className="bg-[rgba(20,25,45,0.9)] rounded-2xl p-8 max-w-md w-full shadow-2xl backdrop-blur-md border border-white/10">
         {/* Avatar con inicial */}
         <div className="w-20 h-20 bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-[0_4px_20px_rgba(102,126,234,0.4)]">

@@ -1,4 +1,53 @@
-const Navbar = () => {
+import { useEffect, useState } from 'react'
+
+export const Navbar = () => {
+  const [activeSection, setActiveSection] = useState('inicio')
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]')
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Si la sección está visible y es la sección de contacto
+          if (entry.isIntersecting && entry.target.id === 'contacto') {
+            setActiveSection('contacto')
+          } else if (entry.isIntersecting) {
+            // Para las demás secciones, usar lógica normal
+            const visibleEntries = Array.from(sections)
+              .filter(section => {
+                const rect = section.getBoundingClientRect()
+                return rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2
+              })
+            
+            if (visibleEntries.length > 0) {
+              setActiveSection(visibleEntries[0].id)
+            }
+          }
+        })
+      },
+      {
+        threshold: [0, 0.15, 0.25, 0.35, 0.5], // Incluimos 0 para detectar mejor la última sección
+        rootMargin: '-120px 0px -20% 0px' // Menos margen inferior para detectar contacto
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section))
+    }
+  }, [])
+
+  const navItems = [
+    { id: 'inicio', label: 'Inicio', icon: '🏠' },
+    { id: 'sobre-mi', label: 'Sobre mí', icon: '👤' },
+    { id: 'proyectos', label: 'Proyectos', icon: '📁' },
+    { id: 'tecnologias', label: 'Tecnologías', icon: '💻' },
+    { id: 'ai', label: 'AI', icon: '🤖' },
+    { id: 'contacto', label: 'Contáctame', icon: '✉️' }
+  ]
+
   return (
     <nav className="fixed top-0 left-0 right-0 bg-[rgba(20,15,40,0.95)] backdrop-blur-md px-8 py-4 z-[1000] shadow-lg">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-8">
@@ -11,36 +60,20 @@ const Navbar = () => {
 
         {/* Menu de navegación */}
         <ul className="flex list-none gap-2 m-0 p-0 flex-1 justify-center">
-          <li className="m-0">
-            <a href="#inicio" className="flex items-center gap-2 px-4 py-2.5 text-white bg-white/15 rounded-md transition-all duration-300 text-sm whitespace-nowrap no-underline hover:text-white hover:bg-white/10">
-              <span className="text-base">🏠</span> Inicio
-            </a>
-          </li>
-          <li className="m-0">
-            <a href="#proyectos" className="flex items-center gap-2 px-4 py-2.5 text-white/70 rounded-md transition-all duration-300 text-sm whitespace-nowrap no-underline hover:text-white hover:bg-white/10">
-              <span className="text-base">📁</span> Proyectos
-            </a>
-          </li>
-          <li className="m-0">
-            <a href="#sobre-mi" className="flex items-center gap-2 px-4 py-2.5 text-white/70 rounded-md transition-all duration-300 text-sm whitespace-nowrap no-underline hover:text-white hover:bg-white/10">
-              <span className="text-base">👤</span> Sobre mí
-            </a>
-          </li>
-          <li className="m-0">
-            <a href="#tecnologias" className="flex items-center gap-2 px-4 py-2.5 text-white/70 rounded-md transition-all duration-300 text-sm whitespace-nowrap no-underline hover:text-white hover:bg-white/10">
-              <span className="text-base">💻</span> Tecnologías
-            </a>
-          </li>
-          <li className="m-0">
-            <a href="#ai" className="flex items-center gap-2 px-4 py-2.5 text-white/70 rounded-md transition-all duration-300 text-sm whitespace-nowrap no-underline hover:text-white hover:bg-white/10">
-              <span className="text-base">🤖</span> AI
-            </a>
-          </li>
-          <li className="m-0">
-            <a href="#contacto" className="flex items-center gap-2 px-4 py-2.5 text-white/70 rounded-md transition-all duration-300 text-sm whitespace-nowrap no-underline hover:text-white hover:bg-white/10">
-              <span className="text-base">✉️</span> Contáctame
-            </a>
-          </li>
+          {navItems.map((item) => (
+            <li key={item.id} className="m-0">
+              <a 
+                href={`#${item.id}`}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-md transition-all duration-300 text-sm whitespace-nowrap no-underline ${
+                  activeSection === item.id
+                    ? 'text-white bg-white/15 shadow-[0_0_15px_rgba(102,126,234,0.3)]'
+                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <span className="text-base">{item.icon}</span> {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
 
         {/* Iconos sociales */}
@@ -65,5 +98,3 @@ const Navbar = () => {
     </nav>
   )
 }
-
-export default Navbar
