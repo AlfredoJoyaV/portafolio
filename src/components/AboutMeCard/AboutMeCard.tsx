@@ -56,25 +56,7 @@ export const AboutMeCard = () => {
                 . Mi especialidad es optimizar la interacción entre front-end y back-end para entregar{' '}
                 <span className="text-white font-semibold">aplicaciones rápidas y de alto rendimiento.</span>
               </p>
-
-              {/* Logros */}
-              <div className="space-y-3 pt-4">
-                <p className="text-white font-semibold text-xl">Entre mis logros destacados están:</p>
-                <ul className="space-y-2 text-right list-none">
-                  <li className="flex items-start justify-end gap-2">
-                    <span>✓ Desarrollo de soluciones full-stack para <span className="text-white font-semibold">automatización</span> de procesos</span>
-                  </li>
-                  <li className="flex items-start justify-end gap-2">
-                    <span>✓ Implementación de interfaces modernas con <span className="text-white font-semibold">React</span> y <span className="text-white font-semibold">Next.js</span></span>
-                  </li>
-                  <li className="flex items-start justify-end gap-2">
-                    <span>✓ Creación de APIs eficientes con <span className="text-white font-semibold">Python</span> y <span className="text-white font-semibold">FastAPI</span></span>
-                  </li>
-                  <li className="flex items-start justify-end gap-2">
-                    <span>✓ Transferencia de conocimiento técnico mediante <span className="text-white font-semibold">mentorías</span></span>
-                  </li>
-                </ul>
-              </div>
+              
             </div>
           </div>
         </div>

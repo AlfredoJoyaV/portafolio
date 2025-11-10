@@ -4,6 +4,7 @@ type Technology = {
   color: string
   url: string
   useWordmark?: boolean
+  customLogo?: string
 }
 
 export const SkillsCard = () => {
@@ -30,7 +31,7 @@ export const SkillsCard = () => {
       { name: 'npm', icon: 'npm', color: 'CB3837', url: 'https://www.npmjs.com', useWordmark: true },
       { name: 'pnpm', icon: 'pnpm', color: 'F69220', url: 'https://pnpm.io' },
       { name: 'Terminal', icon: 'bash', color: '4EAA25', url: 'https://es.wikipedia.org/wiki/Terminal_(inform%C3%A1tica)' },
-      { name: 'HTTPie', icon: 'python', color: '73DC8C', url: 'https://httpie.io' },
+      { name: 'HTTPie', icon: 'httpie', color: '73DC8C', url: 'https://httpie.io', customLogo: 'https://httpie.io/images/httpie-logo.svg' },
     ] as Technology[],
   }
 
@@ -64,7 +65,7 @@ export const SkillsCard = () => {
                     className="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-white/5 transition-all duration-300 group"
                   >
                     <img
-                      src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.icon}/${tech.icon}-${tech.useWordmark ? 'original-wordmark' : 'original'}.svg`}
+                      src={tech.customLogo || `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.icon}/${tech.icon}-${tech.useWordmark ? 'original-wordmark' : 'original'}.svg`}
                       alt={tech.name}
                       className="w-16 h-16 group-hover:scale-110 transition-transform duration-300"
                       onError={(e) => {

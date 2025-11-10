@@ -11,6 +11,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000000;
+  }
+}
+
 #root {
   min-height: 100vh;
 }

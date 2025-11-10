@@ -49,7 +49,7 @@ export const Navbar = () => {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-[rgba(20,15,40,0.95)] backdrop-blur-md px-8 py-4 z-[1000] shadow-lg">
+    <nav className="fixed top-0 left-0 right-0 bg-[rgba(20,15,40,0.95)] dark:bg-black/95 backdrop-blur-md px-8 py-4 z-[1000] shadow-lg dark:border-b dark:border-white/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-8">
         {/* Logo */}
         <div className="text-2xl font-bold text-white min-w-[50px]">
