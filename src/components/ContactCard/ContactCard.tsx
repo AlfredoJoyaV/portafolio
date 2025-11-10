@@ -35,7 +35,7 @@ export const ContactCard = () => {
                 </svg>
               </div>
               <div className="flex-1">
-                <p className="text-base font-medium text-white m-0 mb-1.5">7607-6150</p>
+                <p className="text-base font-medium text-white m-0 mb-1.5">7640-8883</p>
                 <p className="text-xs text-white/50 m-0">Teléfono</p>
               </div>
             </div>
@@ -46,4 +46,3 @@ export const ContactCard = () => {
   )
 }
 
-export default ContactCard

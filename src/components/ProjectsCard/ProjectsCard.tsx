@@ -10,10 +10,10 @@ export const ProjectsCard = () => {
       color: 'from-blue-500 to-purple-500'
     },
     {
-      name: 'Sistema de Gestión',
-      description: 'Aplicación web full-stack para gestión empresarial con autenticación, dashboard y reportes en tiempo real.',
-      technologies: ['Laravel', 'MySQL', 'Bootstrap', 'PHP'],
-      github: '#',
+      name: 'Citas Médicas',
+      description: 'Sistema de gestión de citas médicas con funcionalidades para pacientes y doctores. Incluye programación de citas, historial médico y notificaciones.',
+      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'MySQL'],
+      github: 'https://github.com/AlfredoJoyaV/CitasMedicas',
       demo: '#',
       stars: 0,
       color: 'from-green-500 to-emerald-500'
